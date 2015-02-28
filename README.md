@@ -4,6 +4,7 @@
 Prototype de générateur de Lorem Ipsum dans une langue choisie en se basant sur Wikipedia
 
 # A l'étape de prototype fonctionnel.
+## Démo : http://www.rambobafet.fr/lorem-wikipedia/index.php
 
 ## Pourquoi un nouveau générateur de Lorem Ipsum ?
 Le Lorem Ipsum c'est sympa, ca dépanne le temps de s'occuper de la rédaction des contenus (même si c'est une très mauvaise habitude *attaque gros yeux*).
