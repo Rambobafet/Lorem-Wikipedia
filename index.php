@@ -6,7 +6,8 @@ ini_set('display_errors',1);
  * and open the template in the editor.
  */
 
-include('fn_wikipedia.php');
+include('includes/fn_wikipedia.php');
+include('includes/config.php');
 $lorem_wikipedia = new Lorem_Wikipedia();
 
 ?>
@@ -28,18 +29,29 @@ $lorem_wikipedia = new Lorem_Wikipedia();
         de substitution ? Pour y remédier, je vous propse un bon vieux random(); des familles. Ainsi des vrais mots, des vrais caractères spéciaux, mais aucun sens dès lors qu'on lit plus de 3 mots.</p>
         
         <form action="" method="post">
-            <label for="language">Langue :</label> <input type="text" name="language" id="language" /><br>
-            <label for="nb_p">Nombre de paragraphes :</label> <input type="text" name="nb_p" id="nb_p" /><br>
+            <label for="language">Langue :</label> 
+            <select name="language" id="language">
+                <?php foreach($langues as $key => $value): ?>
+                <option value="<?php echo $key; ?>"><?php echo $value['nom']; ?></option>
+                <?php endforeach; ?>
+            </select>
+            <br>
+            <label for="nb_p">Nombre de paragraphes :</label> <input type="text" name="nb_p" id="nb_p" value="4" /><br>
             <input type="submit" name="submit" value="Lorem !" />
         </form>
         
-        <hr>
+        <?php if(isset($_POST['nb_p'])): ?>
+            <hr>
+
+            <h2>Résultats</h2>
+            <?php 
+            foreach($lorem_wikipedia->makeLorem($_POST['language'], $_POST['nb_p']) as $value):
+                echo $value;
+            endforeach;
         
-        <h2>Résultats</h2>
-        <?php 
-        foreach($lorem_wikipedia->makeLorem('fr', 4) as $value):
-            echo $value;
-        endforeach;
-        ?>        
+        endif;
+        ?>      
+        
+        
     </body>
 </html>
