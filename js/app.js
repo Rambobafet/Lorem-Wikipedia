@@ -4,7 +4,7 @@ jQuery(document).ready(function($){
 		$('article').html('<div style="text-align: center;"><img src="images/loading.gif" alt="génération en cours..." /></div>');
 		$.post( "ajax/get_p.php", 
 			{ 
-				language: $('input[name="language"]').attr('data-lang'), 
+				language: $('input[name="language"]').val(), 
 				nb_p: $('#nb_p').val()
 			}
 		)
@@ -78,7 +78,7 @@ jQuery(document).ready(function($){
 	// Get value hours
     $('.select-wrapper').on('click', '.custom-list li', function() {
         var valueLi = $(this).html();
-        $(this).parent().parent().parent().parent().parent().parent().find('input.custom-select').val(valueLi).trigger('change');
+        $(this).parent().parent().parent().parent().parent().parent().find('input.custom-select').val($(this).attr('data-lang')).trigger('change');
         $(this).parent().parent().parent().parent().parent().parent().find('p.custom-select').html(valueLi).attr('data-lang', $(this).attr('data-lang'));
     });
 	
