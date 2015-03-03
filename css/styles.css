@@ -209,14 +209,9 @@ form div.select-wrapper select{
     display: none;
 }
 
-#achats .option div.select-wrapper select{
-    display: inline;
-}
-
-form .right input,
+form .right input[type="text"],
 form .right p.custom-select{
     width: 250px;
     float: left;
     margin-bottom: 0;
-    
 }
