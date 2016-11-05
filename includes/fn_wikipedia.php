@@ -53,8 +53,16 @@ class Lorem_Wikipedia{
     }
     
     public function getAllWikipediaParagraphes($lang, $number){
-        $html = file_get_contents($this->getUrlRandomWikipedia($lang));
-        
+		$opts = array(
+			'http'=>array(
+				'method'=>"GET",
+				'user_agent'=> $_SERVER['HTTP_USER_AGENT']
+			)
+		);
+					
+		$context = stream_context_create($opts);
+        $html = file_get_contents($this->getUrlRandomWikipedia($lang), false, $context);
+	        
         preg_match_all('%(<p[^>]*>.*?</p>)%i', $html, $paragraphes);
         
         // Vérification du nombre de caractères minimal dans le <p>
